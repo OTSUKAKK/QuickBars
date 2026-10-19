@@ -31,8 +31,9 @@ jobs:
       - name: Prepare Android SDK
         shell: bash
         run: |
-          yes | sdkmanager --licenses >/dev/null || true
-          sdkmanager "platforms;android-36"
+          SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
+          "$SDKMANAGER" "platforms;android-36"
 
       - name: Configure debug build properties
         shell: bash
